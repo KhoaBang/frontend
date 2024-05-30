@@ -7,6 +7,7 @@
   justify-content: center;
   gap: 40px;
 }
+ 
 .choose_label {
   margin-left: 15px;
   font-family: "Inter", sans-serif;
@@ -15,6 +16,7 @@
   color: #828282;
   line-height: 150%;
 }
+ 
 .homepage_nav {
   margin-top: 5px;
 }
@@ -25,6 +27,7 @@
   color: #ff6347;
   line-height: 150%;
 }
+ 
 .profile_nav {
   margin-top: 5px;
 }
@@ -35,6 +38,7 @@
   color: #ff6347;
   line-height: 150%;
 }
+ 
 .cart_nav {
   margin-top: 5px;
 }
@@ -45,6 +49,7 @@
   color: #ff6347;
   line-height: 150%;
 }
+ 
 .order_nav {
   margin-top: 5px;
 }
@@ -73,6 +78,7 @@
 .book_item {
   display: flex;
   align-items: center;
+ 
   background-color: white;
 }
 .search_result_box {
