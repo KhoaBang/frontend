@@ -1,0 +1,28 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  width: 1300px;
+  height: 106px;
+  border-top: solid 1px #c5c5c5;
+  margin-left: 10%;
+  padding-top: 30px;
+}
+
+.social_link {
+  display: flex;
+  gap: 15px;
+}
+.icon {
+  width: 30px;
+}
+
+.page_logo {
+  margin-left: 1065px;
+}
+.logo_icon {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ff6347;
+  line-height: 150%;
+}
