@@ -2,9 +2,6 @@ import React, { useRef, useEffect } from "react";
 
 export default function Paypal( props) {
   const paypal = useRef();
-  // function thanh (){
-  //   return thanhtoan()
-  // }
   const total = props.total
 
   useEffect(() => {
