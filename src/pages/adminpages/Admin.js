@@ -4,6 +4,7 @@ import DeleteBook from "./book-op/DeleteBook";
 import UserIdModal from "./UserIdModal";
 import ImageUpload from './book-op/ImageUpload';
 import AllBookPages from "./book-op/bookgridadmin/AllBookPages"; // Import the AllBookPages component
+import PublishingHousesList from "./PublishingHousesList"; // Import the PublishingHousesList component
 import { useSelector } from "react-redux";
 
 function Admin() {
@@ -14,6 +15,7 @@ function Admin() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isUserIdModalOpen, setIsUserIdModalOpen] = useState(false);
   const [isAllBookOpen, setIsAllBookOpen] = useState(false); // State for AllBookPages modal
+  const [isPublishingHousesModalOpen, setIsPublishingHousesModalOpen] = useState(false); // State for PublishingHousesList modal
 
   // Functions to open and close modals
   const openModal = () => setAddBookOpen(true);
@@ -24,6 +26,8 @@ function Admin() {
   const closeUserIdModal = () => setIsUserIdModalOpen(false);
   const openAllBookModal = () => setIsAllBookOpen(true); // Function to open AllBookPages modal
   const closeAllBookModal = () => setIsAllBookOpen(false); // Function to close AllBookPages modal
+  const openPublishingHousesModal = () => setIsPublishingHousesModalOpen(true); // Function to open PublishingHousesList modal
+  const closePublishingHousesModal = () => setIsPublishingHousesModalOpen(false); // Function to close PublishingHousesList modal
 
   const handleDelete = (bookId) => {
     console.log(`Book with ID ${bookId} deleted`);
@@ -57,6 +61,9 @@ function Admin() {
             <li>
               <button onClick={openAllBookModal}>Xem tất cả sách</button> {/* Button to open AllBookPages modal */}
             </li>
+            <li>
+              <button onClick={openPublishingHousesModal}>Xem tất cả nhà xuất bản</button> {/* Button to open PublishingHousesList modal */}
+            </li>
           </ul>
           <AddBook isOpen={isAddBookOpen} onClose={closeModal} />
           <div>
@@ -76,6 +83,7 @@ function Admin() {
             />
           </div>
           <AllBookPages isOpen={isAllBookOpen} onClose={closeAllBookModal} /> {/* AllBookPages modal */}
+          {isPublishingHousesModalOpen && <PublishingHousesList close ={closePublishingHousesModal} />} {/* Rendering PublishingHousesList component as modal */}
         </div>
       )}
     </div>
