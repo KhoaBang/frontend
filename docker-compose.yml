@@ -1,0 +1,44 @@
+version: '3'
+services:
+  app:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/bookstore
+      ACCESS_TOKEN_SECRET: "your_access_token_secret"
+      REFRESH_TOKEN_SECRET: "your_refresh_token_secret"
+    volumes:
+      - ./data:/usr/src/app/data  # Map data folder to container
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    command: ["--bind_ip_all"]
+
+  mongo-seed:
+    image: mongo:latest
+    depends_on:
+      - mongodb
+    volumes:
+      - ./data:/data  # Ensure data folder is mapped for seeding
+    entrypoint: >
+      bash -c "
+      sleep 10;
+      mongoimport --host mongodb --db bookstore --collection admins --type json --file /data/bookstore.admins.json --jsonArray;
+      mongoimport --host mongodb --db bookstore --collection books --type json --file /data/bookstore.books.json --jsonArray;
+      mongoimport --host mongodb --db bookstore --collection customers --type json --file /data/bookstore.customers.json --jsonArray;
+      mongoimport --host mongodb --db bookstore --collection publishinghouses --type json --file /data/bookstore.publishinghouses.json --jsonArray;
+      "
+volumes:
+  mongo-data:
